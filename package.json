@@ -1,10 +1,10 @@
 {
   "name": "yz-react-deliveri-newpochta",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "API queries for deliveri New Pochta of Ukraine",
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliancwirko/react-npm-boilerplate.git"
+    "url": "https://github.com/zhukyuri/yz-react-deliveri-newpochta"
   },
   "author": "Yuriy Zhuk",
   "license": "MIT",

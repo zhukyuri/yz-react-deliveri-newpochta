@@ -1,27 +1,34 @@
-# Boilerplate for creating React Npm packages with ES2015
+# Oформлениe доставки "Новая почта" (Украина)
+### API запросы для интернет-магазинов
+### Совместимо с React, использование ES2015
 
-The package is based on [npm-base](https://github.com/kadirahq/npm-base) package by [Kadira](https://github.com/kadirahq) which is really great when you want to prepare Npm package. This one is prepared to be used as a starter point for React components which needs to be published on Npm.
+В Украине существует несколько служб доставки товаров, имеющих свой онлайн сервис. Одной из самых популярных это служба "Новая Почта". Она имеет сотни отделений по всей Украине. Интернет-магазины с удовольствием пользуются этой услугой.
 
-It includes linting with [ESLint](http://eslint.org/) and testing with [Mocha](https://mochajs.org/), [Enzyme](http://airbnb.io/enzyme/) and [JSDOM](https://github.com/tmpvar/jsdom).
+Так-как "Новая почта" постоянно развивается и расширяется, стало затруднительно отслеживать работающие и новые отделения. К тому-же у некоторых отделений есть ограничения по весу груза.
+ 
+Я часто использую в своих проектах функцию оформления доставки товаров, поэтому создал этот модуль. В первой версии этого модуля я использую минимальный функционал из того что предлагает API службы.
 
-Also there is of course ES6 transpilation.
+Особенностью модуля есть то, что информация об отделениях не хранится в базе данных, а получается асинхронными запросами с сервера службы. 
+   
+В этой версии пакета использованы запросы для минимального алгоритма оформления доставки:
 
-## Usage
+1. Выбор области Украины.
+2. Выбор города.
+3. Выбор отделения.
 
-1. Clone this repo
-2. Inside cloned repo run `npm install`
-3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`. You need to write tests in `__tests__` folder. You need at least Node 4 on your machine to run tests.
-4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`. You can adjust your `.eslintrc` config file.
-5. If you want to run transpilation to ES5 in `dist` folder: `npm run prepublish` (standard npm hook).
+В следующих версиях планирую сделать запросы для отслеживания товара в пути, его статус.
 
-## Blog post about it:
+Пакет [yz-react-deliveri-newpochta](https://github.com/zhukyuri/yz-react-deliveri-newpochta) находится на GitHub, где можно посмотреть его изнутри.
 
-- [Creating React NPM packages with ES2015](http://julian.io/creating-react-npm-packages-with-es2015/)
+## Установка
 
-## Also check out
+1. cd <директория-проекта>
+2. `npm install yz-react-deliveri-newpochta --save`
 
-- [React Alert UI component](https://github.com/juliancwirko/react-s-alert)
-- [React project boilerplate with Webpack, HMR, React Router](https://github.com/juliancwirko/react-boilerplate)
+## Применение:
+
+- Я готовлю текст документации по применению
+
 
 ## License
 
