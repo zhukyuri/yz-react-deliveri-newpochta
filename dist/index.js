@@ -1,16 +1,16 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', 'fetch'], factory);
+        define(['exports', 'fetch', './config'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('fetch'));
+        factory(exports, require('fetch'), require('./config'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.fetch);
+        factory(mod.exports, global.fetch, global.config);
         global.index = mod.exports;
     }
-})(this, function (exports, _fetch) {
+})(this, function (exports, _fetch, _config) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -50,24 +50,21 @@
     }();
 
     var ApiNovaPochta = function () {
-        function ApiNovaPochta(apiKey) {
+        function ApiNovaPochta() {
             _classCallCheck(this, ApiNovaPochta);
-
-            this.apiKey = apiKey;
-            this.urlApi = 'https://api.novaposhta.ua/v2.0/json/';
         }
 
         _createClass(ApiNovaPochta, [{
             key: 'fetchRequest',
-            value: function fetchRequest(url, apiKey, model, method, prop) {
+            value: function fetchRequest(model, method, prop) {
                 prop = !!prop ? prop : {};
-                return (0, _fetch2.default)(url, {
+                return (0, _fetch2.default)(_config.config.url, {
                     method: 'post',
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
                     },
                     body: {
-                        "apiKey": apiKey,
+                        "apiKey": _config.config.apiKey,
                         "modelName": model,
                         "calledMethod": method,
                         "methodProperties": prop
@@ -79,7 +76,8 @@
             value: function getAreas() {
                 var model = '/Address';
                 var method = '/getAreas';
-                this.fetchRequest(this.urlApi, this.apiKey, model, method);
+                var prop = {};
+                return this.fetchRequest(model, method, prop);
             }
         }]);
 
