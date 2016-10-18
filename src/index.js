@@ -1,23 +1,20 @@
 import fetch from 'fetch';
+import { config } from './config';
 
 export default class ApiNovaPochta {
 
-    constructor(apiKey) {
-        this.apiKey = apiKey;
-        this.urlApi = 'https://api.novaposhta.ua/v2.0/json/';
-    }
 
-    fetchRequest(url, apiKey, model, method, prop) {
+    fetchRequest(model, method, prop) {
         prop = !!(prop) ? prop : {};
         return fetch(
-            url,
+            config.url,
             {
                 method: 'post',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 },
                 body: {
-                    "apiKey": apiKey,
+                    "apiKey": config.apiKey,
                     "modelName": model,
                     "calledMethod": method,
                     "methodProperties": prop
@@ -29,7 +26,8 @@ export default class ApiNovaPochta {
     getAreas() {
         let model = '/Address';
         let method = '/getAreas';
-        this.fetchRequest(this.urlApi, this.apiKey, model, method)
+        let prop = {};
+        return this.fetchRequest(model, method, prop);
 
     }
 }
