@@ -49,7 +49,7 @@
   },
   "peerDependencies": {},
   "dependencies": {
-    "babel-runtime": "^6.6.1",
-    "fetch": "^1.1.0"
+    "axios": "^0.15.2",
+    "babel-runtime": "^6.6.1"
   }
 }

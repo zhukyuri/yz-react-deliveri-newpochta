@@ -1,23 +1,23 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', 'fetch', './config'], factory);
+        define(['exports', './config', 'axios'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('fetch'), require('./config'));
+        factory(exports, require('./config'), require('axios'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.fetch, global.config);
+        factory(mod.exports, global.config, global.axios);
         global.index = mod.exports;
     }
-})(this, function (exports, _fetch, _config) {
+})(this, function (exports, _config, _axios) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
 
-    var _fetch2 = _interopRequireDefault(_fetch);
+    var _axios2 = _interopRequireDefault(_axios);
 
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
@@ -55,29 +55,36 @@
         }
 
         _createClass(ApiNovaPochta, [{
-            key: 'fetchRequest',
-            value: function fetchRequest(model, method, prop) {
+            key: 'axiosRequest',
+            value: function axiosRequest(model, method, apiKey, prop, cb) {
                 prop = !!prop ? prop : {};
-                return (0, _fetch2.default)(_config.config.url, {
+                var data = JSON.stringify({
+                    "apiKey": apiKey,
+                    "modelName": model,
+                    "calledMethod": method,
+                    "methodProperties": prop
+                });
+
+                (0, _axios2.default)({
+                    url: _config.config.apiUrl,
                     method: 'post',
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    },
-                    body: {
-                        "apiKey": _config.config.apiKey,
-                        "modelName": model,
-                        "calledMethod": method,
-                        "methodProperties": prop
-                    }
+                    headers: { "Content-type": "application/json; charset=UTF-8" },
+                    data: data
+                }).then(function (res) {
+                    return res.data;
+                }).then(function (res) {
+                    cb(res);
+                }).catch(function (err) {
+                    console.log('* ERROR * CATCH ', err);
                 });
             }
         }, {
             key: 'getAreas',
-            value: function getAreas() {
-                var model = '/Address';
-                var method = '/getAreas';
+            value: function getAreas(cb, apiKey) {
+                var model = 'Address';
+                var method = 'getAreas';
                 var prop = {};
-                return this.fetchRequest(model, method, prop);
+                return this.axiosRequest(model, method, apiKey, prop, cb);
             }
         }]);
 
