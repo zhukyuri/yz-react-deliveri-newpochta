@@ -58,12 +58,12 @@
             key: 'axiosRequest',
             value: function axiosRequest(model, method, apiKey, prop, cb) {
                 prop = !!prop ? prop : {};
-                var data = JSON.stringify({
+                var data = {
                     "apiKey": apiKey,
                     "modelName": model,
                     "calledMethod": method,
                     "methodProperties": prop
-                });
+                };
 
                 (0, _axios2.default)({
                     url: _config.config.apiUrl,
@@ -84,6 +84,36 @@
                 var model = 'Address';
                 var method = 'getAreas';
                 var prop = {};
+                return this.axiosRequest(model, method, apiKey, prop, cb);
+            }
+        }, {
+            key: 'getSettlements',
+            value: function getSettlements(cb, apiKey) {
+                var model = 'AddressGeneral';
+                var method = 'getSettlements';
+                var prop = {};
+                return this.axiosRequest(model, method, apiKey, prop, cb);
+            }
+        }, {
+            key: 'getCities',
+            value: function getCities(cb, apiKey) {
+                var model = 'Address';
+                var method = 'getCities';
+                var prop = {};
+                return this.axiosRequest(model, method, apiKey, prop, cb);
+            }
+        }, {
+            key: 'getWarehouses',
+            value: function getWarehouses(cb, apiKey, prop) {
+                var model = 'AddressGeneral';
+                var method = 'getWarehouses';
+                return this.axiosRequest(model, method, apiKey, prop, cb);
+            }
+        }, {
+            key: 'getWarehouseTypes',
+            value: function getWarehouseTypes(cb, apiKey, prop) {
+                var model = 'AddressGeneral';
+                var method = 'getWarehouseTypes';
                 return this.axiosRequest(model, method, apiKey, prop, cb);
             }
         }]);
