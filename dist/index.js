@@ -58,12 +58,12 @@
             key: 'axiosRequest',
             value: function axiosRequest(model, method, apiKey, prop, cb) {
                 prop = !!prop ? prop : {};
-                var data = {
+                var data = JSON.stringify({
                     "apiKey": apiKey,
                     "modelName": model,
                     "calledMethod": method,
                     "methodProperties": prop
-                };
+                });
 
                 (0, _axios2.default)({
                     url: _config.config.apiUrl,

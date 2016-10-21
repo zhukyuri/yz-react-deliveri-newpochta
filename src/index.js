@@ -5,12 +5,12 @@ export default class ApiNovaPochta {
 
     axiosRequest(model, method, apiKey, prop, cb) {
         prop = !!(prop) ? prop : {};
-        let data = {
+        var data = JSON.stringify({
             "apiKey": apiKey,
             "modelName": model,
             "calledMethod": method,
             "methodProperties": prop
-        };
+        });
 
         axios(
             {
