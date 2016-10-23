@@ -1,6 +1,6 @@
 {
   "name": "yz-react-deliveri-newpochta",
-  "version": "1.0.19",
+  "version": "1.0.21",
   "description": "API queries for deliveri New Post of Ukraine",
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
     "http",
     "new post",
     "нова пошта",
-    "новая почта"
+    "новая почта",
+    "delivery",
+    "shop"
   ],
   "options": {
     "mocha": "--require scripts/mocha_runner src/**/__tests__/**/*.js"
