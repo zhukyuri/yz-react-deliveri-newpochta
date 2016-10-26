@@ -88,10 +88,9 @@
             }
         }, {
             key: 'getSettlements',
-            value: function getSettlements(cb, apiKey) {
+            value: function getSettlements(cb, apiKey, prop) {
                 var model = 'AddressGeneral';
                 var method = 'getSettlements';
-                var prop = {};
                 return this.axiosRequest(model, method, apiKey, prop, cb);
             }
         }, {
@@ -111,7 +110,7 @@
             }
         }, {
             key: 'getWarehouseTypes',
-            value: function getWarehouseTypes(cb, apiKey, prop) {
+            value: function getWarehouseTypes(cb, apiKey) {
                 var model = 'AddressGeneral';
                 var method = 'getWarehouseTypes';
                 return this.axiosRequest(model, method, apiKey, prop, cb);

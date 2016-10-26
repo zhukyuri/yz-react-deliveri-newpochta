@@ -38,10 +38,9 @@ export default class ApiNovaPochta {
         return this.axiosRequest(model, method, apiKey, prop, cb);
     }
 
-    getSettlements(cb, apiKey) {
+    getSettlements(cb, apiKey, prop) {
         let model = 'AddressGeneral';
         let method = 'getSettlements';
-        let prop = {};
         return this.axiosRequest(model, method, apiKey, prop, cb);
     }
 
@@ -58,7 +57,7 @@ export default class ApiNovaPochta {
         return this.axiosRequest(model, method, apiKey, prop, cb);
     }
 
-    getWarehouseTypes(cb, apiKey, prop) {
+    getWarehouseTypes(cb, apiKey) {
         let model = 'AddressGeneral';
         let method = 'getWarehouseTypes';
         return this.axiosRequest(model, method, apiKey, prop, cb);
